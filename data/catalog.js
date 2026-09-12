@@ -1,29 +1,24 @@
-// Playback policy: R-rated and age-restricted movie entries are excluded from this channel rotation.
-// Showtime's comedy/adventure/science/space rotation.
-// Availability is rechecked in the player and failed sources are replaced.
+// Showtime resilient catalog.
+// YouTube Movies/DRM listings are intentionally excluded because paid or protected
+// listings can fail inside third-party embeds. The live rotation uses ordinary
+// full-length distributor uploads already proven usable by the channel family.
 window.HERMIT_CATALOG = [
-  { id:"SHO-001", title:"Without a Paddle", year:2004, collection:"Wild Comedy Adventure", runtimeSeconds:5940, videoId:"BeiSL-fyaxA", source:"YouTube Movies", networkChannel:"Showtime", cleared:true },
-  { id:"SHO-003", title:"Bumblebee", year:2018, collection:"Robot Adventure", runtimeSeconds:6840, videoId:"nzn1m-hbPYw", source:"YouTube Movies", networkChannel:"Showtime", cleared:true },
-  { id:"SHO-004", title:"Jules", year:2023, collection:"Science-Fiction Comedy", runtimeSeconds:5220, videoId:"NOvDzH1ixxQ", source:"YouTube Movies", networkChannel:"Showtime", cleared:true },
-  { id:"SHO-005", title:"A-X-L", year:2018, collection:"Robot Companion Adventure", runtimeSeconds:5880, videoId:"dygYCbG-jNk", source:"YouTube Movies", networkChannel:"Showtime", cleared:true },
-  { id:"SHO-006", title:"Masterminds", year:2016, collection:"Heist Comedy", runtimeSeconds:5700, videoId:"WzJFojW2tkY", source:"YouTube Movies", networkChannel:"Showtime", cleared:true },
-  { id:"SHO-007", title:"The Spy Next Door", year:2010, collection:"Family Action Comedy", runtimeSeconds:5640, videoId:"gNK-Yr8ktgM", source:"YouTube Movies", networkChannel:"Showtime", cleared:true },
-  { id:"SHO-008", title:"Ghost Town", year:2008, collection:"Supernatural Comedy", runtimeSeconds:6120, videoId:"MGdx0wt2fkg", source:"YouTube Movies", networkChannel:"Showtime", cleared:true },
-  { id:"SHO-011", title:"So Undercover", year:2012, collection:"Undercover Comedy", runtimeSeconds:5640, videoId:"ZldYaXKZlrs", source:"YouTube Movies", networkChannel:"Showtime", cleared:true },
-  { id:"SHO-012", title:"UFO", year:2018, collection:"First Contact", runtimeSeconds:5280, videoId:"tIjtlGXeDyc", source:"YouTube Movies", networkChannel:"Showtime", cleared:true },
-  { id:"SHO-013", title:"100% Wolf", year:2020, collection:"Animated Adventure", runtimeSeconds:5760, videoId:"Rf4eApq8LpE", source:"YouTube Movies", networkChannel:"Showtime", cleared:true },
-  { id:"SHO-014", title:"Cool Dog", year:2010, collection:"Family Road Adventure", runtimeSeconds:5280, videoId:"1tIke8ESI9Q", source:"YouTube Movies", networkChannel:"Showtime", cleared:true }
+  { id:"SHO-SAFE-001", title:"Daddy Daughter Trip", year:2025, collection:"Family Comedy Premiere", runtimeSeconds:5795, videoId:"fIhM9MiEN50", source:"Movie Central", networkChannel:"Showtime", contentClass:"Family", cleared:true },
+  { id:"SHO-SAFE-002", title:"Mayberry Man", year:2022, collection:"Small-Town Comedy", runtimeSeconds:5927, videoId:"a_AwfI9TPY8", source:"EncourageTV", networkChannel:"Showtime", contentClass:"Family", cleared:true },
+  { id:"SHO-SAFE-003", title:"Accidental Family", year:2021, collection:"Romantic Comedy", runtimeSeconds:5672, videoId:"XH63ZMpgsAk", source:"Movie Central", networkChannel:"Showtime", contentClass:"Family", cleared:true },
+  { id:"SHO-SAFE-004", title:"Stinky Summer", year:2025, collection:"Summer Adventure", runtimeSeconds:5415, videoId:"Gxa3gWpVPes", source:"Family Central", networkChannel:"Showtime", contentClass:"Family", cleared:true },
+  { id:"SHO-SAFE-005", title:"Runs in the Family", year:2023, collection:"Adventure Comedy", runtimeSeconds:6300, videoId:"AuwUwN1JVec", source:"Established free full-length upload", networkChannel:"Showtime", contentClass:"Family", cleared:true },
+  { id:"SHO-SAFE-006", title:"Moving McAllister", year:2007, collection:"Road Comedy", runtimeSeconds:5340, videoId:"mVZOMXWsExs", source:"Established free full-length upload", networkChannel:"Showtime", contentClass:"Family", cleared:true }
 ].map(program => ({ ...program, posterUrl:"" }));
 
 window.INFINITY_CHANNEL = {
   id:"Showtime",
   era:"2000-2026",
-  genres:["comedy", "adventure", "robots", "science", "space"],
-  schedulePolicy:"No title or YouTube video ID may air on another Infinity channel on the same station date."
+  genres:["comedy", "adventure", "family", "science", "space"],
+  sourcePolicy:"No YouTube Movies DRM IDs, age-restricted videos, trailers, promos or short clips.",
+  schedulePolicy:"Only ordinary full-length distributor uploads may enter the live rotation."
 };
 
-// Tomorrow's ad layer can replace each 60-second station card with four
-// personalized 15-second spots. Blank IDs intentionally keep tonight ad-free.
 window.HERMIT_COMMERCIALS = [
   { id:"AD-001", title:"Showtime intermission", durationSeconds:60, videoId:"", cleared:true },
   { id:"AD-002", title:"Tonight on Showtime", durationSeconds:60, videoId:"", cleared:true },

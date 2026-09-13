@@ -6,26 +6,37 @@
   <meta name="referrer" content="strict-origin-when-cross-origin">
   <meta name="theme-color" content="#160521">
   <title>Showtime Channel</title>
-  <meta name="description" content="A synchronized comedy, adventure, robots, science, and space channel with a live guide and personal rewind.">
+  <meta name="description" content="A synchronized classic movie channel focused on licensed full-length 1980s and 1990s features with a live guide and personal rewind.">
   <link rel="canonical" href="https://www-infinity4.github.io/Showtime/">
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="Showtime Channel">
-  <meta property="og:title" content="Showtime — Comedy, Adventure and Worlds Beyond">
-  <meta property="og:description" content="Comedy, adventure, robots, science and space on one synchronized channel. Enter live, rewind, or start over.">
+  <meta property="og:title" content="Showtime — Classic Movies Are Already Playing">
+  <meta property="og:description" content="Licensed full-length 1980s and 1990s movies on one synchronized channel. Enter live, rewind, or start over.">
   <meta property="og:url" content="https://www-infinity4.github.io/Showtime/">
-  <meta property="og:image" content="https://www-infinity4.github.io/Showtime/assets/channel-share.jpg?v=1">
-  <meta property="og:image:secure_url" content="https://www-infinity4.github.io/Showtime/assets/channel-share.jpg?v=1">
+  <meta property="og:image" content="https://www-infinity4.github.io/Showtime/assets/channel-share.jpg?v=2">
+  <meta property="og:image:secure_url" content="https://www-infinity4.github.io/Showtime/assets/channel-share.jpg?v=2">
   <meta property="og:image:type" content="image/jpeg">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
-  <meta property="og:image:alt" content="Showtime comedy and space adventure channel artwork">
+  <meta property="og:image:alt" content="Showtime classic movie channel artwork">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Showtime — Comedy, Adventure and Worlds Beyond">
-  <meta name="twitter:description" content="Comedy, adventure, robots, science and space on one synchronized channel.">
-  <meta name="twitter:image" content="https://www-infinity4.github.io/Showtime/assets/channel-share.jpg?v=1">
-  <meta name="twitter:image:alt" content="Showtime comedy and space adventure channel artwork">
+  <meta name="twitter:title" content="Showtime — Classic Movies Are Already Playing">
+  <meta name="twitter:description" content="Licensed full-length 1980s and 1990s movies on one synchronized channel.">
+  <meta name="twitter:image" content="https://www-infinity4.github.io/Showtime/assets/channel-share.jpg?v=2">
+  <meta name="twitter:image:alt" content="Showtime classic movie channel artwork">
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2309070f'/%3E%3Cpath d='M14 18h36v27H14z' fill='%23171220' stroke='%23f3c76a' stroke-width='4'/%3E%3Cpath d='M25 52h14M23 12l9 8 9-8' fill='none' stroke='%23f3c76a' stroke-width='4' stroke-linecap='round'/%3E%3Ccircle cx='44' cy='38' r='3' fill='%23ef4b5f'/%3E%3C/svg%3E">
-  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="styles.css?v=20260913a">
+  <style>
+    .masthead{grid-template-columns:1fr auto auto 1fr}
+    .channel-menu{position:relative;justify-self:end}
+    .channel-menu summary{min-width:48px;min-height:46px;padding:0 13px;display:inline-flex;align-items:center;justify-content:center;gap:8px;color:var(--cream);background:var(--panel);border:1px solid var(--line);border-radius:999px;cursor:pointer;font-weight:800;list-style:none}
+    .channel-menu summary::-webkit-details-marker{display:none}
+    .channel-menu nav{position:absolute;right:0;top:calc(100% + 8px);z-index:60;width:min(86vw,320px);max-height:70vh;overflow:auto;padding:9px;display:grid;gap:5px;background:#09070f;border:1px solid var(--line);border-radius:14px;box-shadow:0 18px 55px rgba(0,0,0,.58)}
+    .channel-menu:not([open]) nav{display:none}
+    .channel-menu nav a{display:block;padding:10px 11px;color:var(--cream);text-decoration:none;background:rgba(255,255,255,.05);border-radius:9px;font-weight:700}
+    .channel-menu nav a[aria-current="page"]{outline:2px solid var(--gold)}
+    @media(max-width:720px){.masthead{grid-template-columns:1fr auto auto}.channel-menu .menu-label{display:none}.on-air{justify-self:end}}
+  </style>
 </head>
 <body style="--program-hue: 286; --program-art: url('assets/channel-share.jpg')">
   <header class="masthead">
@@ -33,6 +44,10 @@
       <span class="brand-mark" aria-hidden="true">H</span>
       <span>SHOWTIME</span>
     </a>
+    <details class="channel-menu">
+      <summary aria-label="Open channel remote"><span aria-hidden="true">☰</span><span class="menu-label">Channels</span></summary>
+      <nav aria-label="Switch channels"></nav>
+    </details>
     <div class="on-air"><span></span> ON AIR</div>
     <time id="stationClock">--:-- -- local</time>
   </header>
@@ -41,8 +56,8 @@
     <section class="theater" aria-labelledby="nowTitle">
       <div class="marquee">
         <div>
-          <p id="modeLabel">LIVE CHANNEL</p>
-          <h1 id="nowTitle">Loading today’s program…</h1>
+          <p id="modeLabel">LIVE CLASSIC MOVIES</p>
+          <h1 id="nowTitle">Loading today’s classic movie…</h1>
         </div>
         <div class="program-time" id="programTime">Please wait</div>
       </div>
@@ -80,7 +95,7 @@
 
     <section class="next-up" aria-labelledby="nextHeading">
       <div class="section-heading">
-        <p>ONE CHANNEL · ONE SHARED MOMENT</p>
+        <p>1980s + 1990s · ONE SHARED MOMENT</p>
         <h2 id="nextHeading">Next on Showtime</h2>
       </div>
       <div id="nextCards" class="next-grid"></div>
@@ -90,7 +105,7 @@
       <div class="section-heading guide-heading">
         <div>
           <p>TODAY · RESETS AT 12:00 AM LOCAL TIME</p>
-          <h2 id="guideHeading">TV guide</h2>
+          <h2 id="guideHeading">Showtime TV guide</h2>
         </div>
         <span id="guideDate"></span>
       </div>
@@ -98,15 +113,17 @@
     </section>
   </main>
 
+  <section class="channel-directory" aria-labelledby="channelDirectoryHeading"><p id="channelDirectoryHeading">Choose another channel</p><nav aria-label="All channels"></nav></section>
+
   <footer>
     <span>SHOWTIME</span>
-    <p>Live by default. Rewind whenever you want your own showing.</p>
+    <p>Classic full-length movies live by default. Rewind whenever you want your own showing.</p>
   </footer>
 
-  <script src="data/catalog.js?v=20260912m"></script>
+  <script src="data/catalog.js?v=20260913a"></script>
   <script src="engine.js?v=20260912j"></script>
-  <script src="https://www-infinity4.github.io/TNT/channels.js?v=20260912c"></script>
-  <script src="app.js"></script>
+  <script src="https://www-infinity4.github.io/TNT/channels.js?v=20260913a"></script>
+  <script src="app.js?v=20260913a"></script>
   <script src="https://www-infinity4.github.io/TNT/pip.js?v=20260912c"></script>
 </body>
 </html>

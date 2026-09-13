@@ -133,3 +133,33 @@ footer span { color: var(--gold); font: 700 1.25rem Georgia, serif; letter-spaci
   html { scroll-behavior: auto; }
   #progressBar { transition: none; }
 }
+
+
+/* Native Showtime channel remote */
+.channel-menu { position: relative; justify-self: end; z-index: 50; }
+.channel-menu > summary {
+  min-width: 48px; min-height: 46px; padding: 0 13px; display: inline-flex;
+  align-items: center; justify-content: center; gap: 8px; color: var(--cream);
+  background: var(--panel); border: 1px solid var(--line); border-radius: 999px;
+  cursor: pointer; font-weight: 850; list-style: none;
+}
+.channel-menu > summary::-webkit-details-marker { display: none; }
+.channel-menu > summary > span:first-child { font-size: 1.45rem; line-height: 1; }
+.channel-menu[open] > summary, .channel-menu > summary:focus-visible {
+  border-color: var(--gold); outline: none;
+}
+.channel-menu > nav {
+  position: absolute; top: calc(100% + 10px); right: 0; z-index: 60;
+  width: min(260px, calc(100vw - 28px)); max-height: calc(100dvh - 92px);
+  overflow-y: auto; padding: 8px; display: grid; gap: 4px;
+  background: rgba(9,7,15,.98); border: 1px solid var(--line);
+  border-radius: 14px; box-shadow: 0 22px 60px rgba(0,0,0,.58);
+}
+.channel-menu > nav a {
+  min-height: 46px; padding: 0 14px; display: flex; align-items: center;
+  color: var(--cream); border-radius: 9px; text-decoration: none; font-weight: 800;
+}
+.channel-menu > nav a:hover, .channel-menu > nav a:focus-visible {
+  background: var(--panel-2); outline: none;
+}
+.channel-menu > nav a[aria-current="page"] { color: var(--ink); background: var(--gold); }

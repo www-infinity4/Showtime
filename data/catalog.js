@@ -1,26 +1,34 @@
-// Unique seed bucket 5/8 for Showtime.
-// Control Phi's movie source farm expands this channel toward 96 distinct,
-// profile-matched full movies. The seed IDs are never shared with another
-// movie-channel seed catalog.
-(function(){
-  "use strict";
+// Showtime resilient catalog.
+// YouTube Movies/DRM listings are intentionally excluded because paid or protected
+// listings can fail inside third-party embeds. The live rotation uses ordinary
+// full-length distributor uploads already proven usable by the channel family.
+window.HERMIT_CATALOG = [
+  { id:"SHO-SAFE-001", title:"Daddy Daughter Trip", year:2025, collection:"Family Comedy Premiere", runtimeSeconds:5795, videoId:"fIhM9MiEN50", source:"Movie Central", networkChannel:"Showtime", contentClass:"Family", cleared:true },
+  { id:"SHO-SAFE-002", title:"Mayberry Man", year:2022, collection:"Small-Town Comedy", runtimeSeconds:5927, videoId:"a_AwfI9TPY8", source:"EncourageTV", networkChannel:"Showtime", contentClass:"Family", cleared:true },
+  { id:"SHO-SAFE-003", title:"Accidental Family", year:2021, collection:"Romantic Comedy", runtimeSeconds:5672, videoId:"XH63ZMpgsAk", source:"Movie Central", networkChannel:"Showtime", contentClass:"Family", cleared:true },
+  { id:"SHO-SAFE-004", title:"Stinky Summer", year:2025, collection:"Summer Adventure", runtimeSeconds:5415, videoId:"Gxa3gWpVPes", source:"Family Central", networkChannel:"Showtime", contentClass:"Family", cleared:true },
+  { id:"SHO-SAFE-005", title:"Runs in the Family", year:2023, collection:"Adventure Comedy", runtimeSeconds:6300, videoId:"AuwUwN1JVec", source:"Established free full-length upload", networkChannel:"Showtime", contentClass:"Family", cleared:true },
+  { id:"SHO-SAFE-006", title:"Moving McAllister", year:2007, collection:"Road Comedy", runtimeSeconds:5340, videoId:"mVZOMXWsExs", source:"Established free full-length upload", networkChannel:"Showtime", contentClass:"Family", cleared:true }
+].map(program => ({ ...program, posterUrl:"" }));
 
-  const rows = [
-    ["Tad: The Lost Explorer",5516,"BCiJ_oEZp10","Family Central"],
-    ["Christmas Cupcakes",5303,"PLfY5kkilDo","Family Central"],
-    ["Aperture Kids and the Mysterious Neighbor",5195,"fpkKrYxj-w0","Family Central"],
-    ["Skydog",6528,"MMKHRyb6PfI","Family Central"],
-    ["Courageous Love",6018,"t21hgLkHQH8","EncourageTV"],
-    ["Forgiveness Girl",6661,"SMhZXMNPzD8","EncourageTV"],
-    ["A Holiday Homecoming",5074,"-henyvmkaOI","Movie Central"],
-    ["Deep Sea",6744,"3-dwGGwoIcQ","Shout! Studios"],
-    ["Cats",5446,"QrnXZgFYMbk","Shout! Studios"],
-    ["Opal Dream",5127,"bwnXCtBHKmQ","Shout! Studios"],
-    ["Kikoriki: Team Invincible",5470,"vZT3O3Gp7Mk","Shout! Studios"],
-    ["Lucy Shimmers and the Prince of Peace",5251,"BhRNnsC0ugA","EncourageTV Kids"]
-  ];
+window.INFINITY_CHANNEL = {
+  id:"SHOWTIME",
+  era:"2000-2026",
+  genres:["comedy", "adventure", "family", "science", "space"],
+  sourcePolicy:"No YouTube Movies DRM IDs, age-restricted videos, trailers, promos or short clips.",
+  schedulePolicy:"Only ordinary full-length distributor uploads may enter the live rotation."
+};
 
-  window.HERMIT_CATALOG=rows.map(function(row,index){return{id:"SHOWTIME-SEED-"+String(index+1).padStart(3,"0"),title:row[0],year:null,collection:"Comedy / Drama Seed",runtimeSeconds:row[1],videoId:row[2],source:row[3],networkChannel:"Showtime",contentClass:"Seed Feature",rating:"Unrated",cleared:true,posterUrl:""};});
-  window.INFINITY_CHANNEL={id:"SHOWTIME",sourcePolicy:"Unique static seed bucket 5/8. Runtime catalog expansion comes from Showtime's own Control Phi source profile.",schedulePolicy:"Seven-day no-repeat scheduler. Missing inventory stays empty until unique sources are harvested; it never wraps the seed list."};
-  window.HERMIT_COMMERCIALS=[{id:"AD-001",title:"Showtime intermission",durationSeconds:60,videoId:"",cleared:true}];
+window.HERMIT_COMMERCIALS = [
+  { id:"AD-001", title:"Showtime intermission", durationSeconds:60, videoId:"", cleared:true },
+  { id:"AD-002", title:"Tonight on Showtime", durationSeconds:60, videoId:"", cleared:true },
+  { id:"AD-003", title:"Showtime station break", durationSeconds:60, videoId:"", cleared:true }
+];
+
+(function syncInfinityChannels(){
+  if (document.querySelector('script[data-infinity-channels]')) return;
+  const script = document.createElement('script');
+  script.src = 'https://www-infinity4.github.io/TNT/channels.js?v=20260915-live1';
+  script.dataset.infinityChannels = '1';
+  document.head.appendChild(script);
 })();
